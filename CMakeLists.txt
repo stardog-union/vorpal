@@ -79,13 +79,12 @@ set_property(TARGET libz PROPERTY IMPORTED LOCATION ${LIBZ_A})
 ExternalProject_Add(
   boost
   DOWNLOAD_COMMAND bash -c "rmdir ${CMAKE_CURRENT_BINARY_DIR}/external/src/boost && wget -nc -P ${CMAKE_CURRENT_BINARY_DIR}/../download/boost https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_1_67_0.zip && unzip ${CMAKE_CURRENT_BINARY_DIR}/../download/boost/boost_1_67_0.zip -d ${CMAKE_CURRENT_BINARY_DIR}/external/src && mv ${CMAKE_CURRENT_BINARY_DIR}/external/src/boost_1_67_0 ${CMAKE_CURRENT_BINARY_DIR}/external/src/boost"
-  URL https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.zip
   PREFIX external
   DOWNLOAD_DIR ${CMAKE_CURRENT_BINARY_DIR}/../download/boost
   INSTALL_DIR external/out/boost
-  CONFIGURE_COMMAND ./bootstrap.sh --prefix=${CMAKE_CURRENT_BINARY_DIR}/external/out/boost --without-icu --with-libraries=filesystem,program_options,system
-  BUILD_COMMAND ./b2 -j4
-  INSTALL_COMMAND ./b2 install
+  CONFIGURE_COMMAND ${BOOST_ENV_FLAGS_STR} ./bootstrap.sh ${BOOST_BOOTSTRAP_FLAGS_STR} --prefix=${CMAKE_CURRENT_BINARY_DIR}/external/out/boost --without-icu --with-libraries=filesystem,program_options,system
+  BUILD_COMMAND ${BOOST_ENV_FLAGS_STR} ./b2 ${BOOST_BUILD_FLAGS_STR} -q -o boost_build.out -d3 -j4 --ignore-site-config threading=multi variant=release link=static --prefix=${CMAKE_CURRENT_BINARY_DIR}/external/out/boost --disable-icu --with-filesystem --with-program_options --with-system
+  INSTALL_COMMAND ${BOOST_ENV_FLAGS_STR} ./b2 ${BOOST_BUILD_FLAGS_STR}  -q -d3 -j4 --ignore-site-config install
   BUILD_IN_SOURCE 1
   LOG_DOWNLOAD ON
 )

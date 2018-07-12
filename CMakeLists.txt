@@ -157,4 +157,14 @@ target_link_libraries(vorpal)
 
 add_dependencies(vorpal vowpal_wabbit)
 
-#target_link_libraries(vorpal libboost_program_options libz -static-libstdc++)
+set(VORPAL_SHARED_LIB vorpal${ARTIFACT_SUFFIX})
+install(
+  FILES
+  "src/*.h"
+  DESTINATION "include/"
+)
+
+install(
+  TARGETS ${VORPAL_SHARED_LIB}
+  LIBRARY DESTINATION "lib/"
+)

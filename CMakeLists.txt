@@ -153,7 +153,6 @@ file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h)
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc)
 
 add_library(vorpal SHARED ${SOURCES} ${HEADERS})
-target_link_libraries(vorpal)
 
 add_dependencies(vorpal vowpal_wabbit)
 

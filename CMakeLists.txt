@@ -157,11 +157,11 @@ add_library(vorpal SHARED ${SOURCES} ${HEADERS})
 add_dependencies(vorpal vowpal_wabbit)
 
 set(VORPAL_SHARED_LIB vorpal${ARTIFACT_SUFFIX})
-install(
-  FILES
-  "src/*.h"
-  DESTINATION include
-)
+# install(
+#   FILES
+#   "src/*.h"
+#   DESTINATION include
+# )
 
 install(
   TARGETS vorpal

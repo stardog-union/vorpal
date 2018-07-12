@@ -165,6 +165,6 @@ install(
 )
 
 install(
-  TARGETS ${VORPAL_SHARED_LIB}
+  TARGETS vorpal
   LIBRARY DESTINATION "lib/"
 )

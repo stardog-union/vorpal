@@ -160,10 +160,10 @@ set(VORPAL_SHARED_LIB vorpal${ARTIFACT_SUFFIX})
 install(
   FILES
   "src/*.h"
-  DESTINATION "include/"
+  DESTINATION include
 )
 
 install(
   TARGETS vorpal
-  LIBRARY DESTINATION "lib/"
+  LIBRARY DESTINATION lib
 )

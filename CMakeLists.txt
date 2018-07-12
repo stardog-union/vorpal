@@ -165,5 +165,6 @@ set(VORPAL_SHARED_LIB vorpal${ARTIFACT_SUFFIX})
 
 install(
   TARGETS vorpal
+  EXPORT VorpalTargets
   LIBRARY DESTINATION lib
 )

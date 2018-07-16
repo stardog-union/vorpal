@@ -240,11 +240,6 @@ install(TARGETS vorpal
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
-install(
-  FILES
-    "${PROJECT_SOURCE_DIR}/vorpal.h"
-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-)
 
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(

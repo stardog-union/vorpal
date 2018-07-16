@@ -31,7 +31,7 @@ include(ExternalProject)
 
 ExternalProject_Add(
   zlib
-  DOWNLOAD_COMMAND bash -c "rmdir ${CMAKE_CURRENT_BINARY_DIR}/external/src/zlib && wget -nc -P ${CMAKE_CURRENT_BINARY_DIR}/../download/zlib http://prdownloads.sourceforge.net/libpng/zlib1211.zip?download && unzip ${CMAKE_CURRENT_BINARY_DIR}/../download/zlib/zlib1211.zip\?download -d ${CMAKE_CURRENT_BINARY_DIR}/external/src && mv ${CMAKE_CURRENT_BINARY_DIR}/external/src/zlib-${ZLIB_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/external/src/zlib"
+  DOWNLOAD_COMMAND bash -c "rmdir ${CMAKE_CURRENT_BINARY_DIR}/external/src/zlib && wget -nc -P ${CMAKE_CURRENT_BINARY_DIR}/../download/zlib http://prdownloads.sourceforge.net/libpng/zlib1211.zip?download && unzip -o ${CMAKE_CURRENT_BINARY_DIR}/../download/zlib/zlib1211.zip\?download -d ${CMAKE_CURRENT_BINARY_DIR}/external/src && mv ${CMAKE_CURRENT_BINARY_DIR}/external/src/zlib-${ZLIB_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/external/src/zlib"
   URL http://prdownloads.sourceforge.net/libpng/zlib1211.zip?download
   PREFIX external
   INSTALL_DIR external/out/zlib
@@ -55,7 +55,7 @@ set_property(TARGET libz PROPERTY IMPORTED LOCATION ${LIBZ_A})
 
 ExternalProject_Add(
   boost
-  DOWNLOAD_COMMAND bash -c "rmdir ${CMAKE_CURRENT_BINARY_DIR}/external/src/boost && wget -nc -P ${CMAKE_CURRENT_BINARY_DIR}/../download/boost https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_1_67_0.zip && unzip ${CMAKE_CURRENT_BINARY_DIR}/../download/boost/boost_1_67_0.zip -d ${CMAKE_CURRENT_BINARY_DIR}/external/src && mv ${CMAKE_CURRENT_BINARY_DIR}/external/src/boost_1_67_0 ${CMAKE_CURRENT_BINARY_DIR}/external/src/boost"
+  DOWNLOAD_COMMAND bash -c "rmdir ${CMAKE_CURRENT_BINARY_DIR}/external/src/boost && wget -nc -P ${CMAKE_CURRENT_BINARY_DIR}/../download/boost https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_1_67_0.zip && unzip -o ${CMAKE_CURRENT_BINARY_DIR}/../download/boost/boost_1_67_0.zip -d ${CMAKE_CURRENT_BINARY_DIR}/external/src && mv ${CMAKE_CURRENT_BINARY_DIR}/external/src/boost_1_67_0 ${CMAKE_CURRENT_BINARY_DIR}/external/src/boost"
   URL https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.zip
   PREFIX external
   DOWNLOAD_DIR ${CMAKE_CURRENT_BINARY_DIR}/../download/boost
@@ -94,7 +94,7 @@ set(VOWPAL_WABBIT_INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}/external/out/vowpal_wa
 ExternalProject_Add(
   vowpal_wabbit
   DEPENDS boost zlib
-  DOWNLOAD_COMMAND bash -c "rmdir ${CMAKE_CURRENT_BINARY_DIR}/external/src/vowpal_wabbit && wget -nc -P ${CMAKE_CURRENT_BINARY_DIR}/../download/vowpal_wabbit https://github.com/JohnLangford/vowpal_wabbit/archive/${VOWPAL_WABBIT_VERSION}.zip && unzip ${CMAKE_CURRENT_BINARY_DIR}/../download/vowpal_wabbit/${VOWPAL_WABBIT_VERSION}.zip -d ${CMAKE_CURRENT_BINARY_DIR}/external/src && mv ${CMAKE_CURRENT_BINARY_DIR}/external/src/vowpal_wabbit-${VOWPAL_WABBIT_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/external/src/vowpal_wabbit"
+  DOWNLOAD_COMMAND bash -c "rmdir ${CMAKE_CURRENT_BINARY_DIR}/external/src/vowpal_wabbit && wget -nc -P ${CMAKE_CURRENT_BINARY_DIR}/../download/vowpal_wabbit https://github.com/JohnLangford/vowpal_wabbit/archive/${VOWPAL_WABBIT_VERSION}.zip && unzip -o ${CMAKE_CURRENT_BINARY_DIR}/../download/vowpal_wabbit/${VOWPAL_WABBIT_VERSION}.zip -d ${CMAKE_CURRENT_BINARY_DIR}/external/src && mv ${CMAKE_CURRENT_BINARY_DIR}/external/src/vowpal_wabbit-${VOWPAL_WABBIT_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/external/src/vowpal_wabbit"
   URL https://github.com/JohnLangford/vowpal_wabbit/archive/${VOWPAL_WABBIT_VERSION}.zip
   PREFIX external
   DOWNLOAD_DIR ${CMAKE_CURRENT_BINARY_DIR}/../download/vowpal_wabbit
